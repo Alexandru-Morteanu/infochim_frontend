@@ -8,6 +8,14 @@ body {
 .App{
   height: 100vh;
 }
+.homeimage{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .stand{
   height: 330px;
   width: 250px;
@@ -16,7 +24,7 @@ body {
 }
 .erlen{
   height: 100px;
-  width: 66px;
+  width: 67px;
   background-image: url(/Users/morteanualexandru/Desktop/infochim/frontend/public/Erlenmeyer.png);
   background-size: contain;
   z-index: 2;
@@ -28,4 +36,12 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 1;
+}
+@media (min-width: 500px) {
+  .homeimage{
+    right: auto;
+  }
+  #container-top{
+    left: auto;
+  }
 }
