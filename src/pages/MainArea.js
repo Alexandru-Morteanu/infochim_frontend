@@ -40,6 +40,7 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
         indicator: indicator,
         erlenSol: erlenSol,
       });
+      console.log(res.data);
       setBuretVer(res.data.buret.includes("Yes") ? true : false);
       setIndicatorVer(res.data.indicator.includes("Yes") ? true : false);
       setErlenVer(res.data.erlen.includes("Yes") ? true : false);

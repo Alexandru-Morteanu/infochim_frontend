@@ -8,11 +8,12 @@ body {
 .App{
   height: 100vh;
 }
+
 .homeimage{
   position: absolute;
-  right: 0;
   top: 0;
   height: 100%;
+  overflow: hidden;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -37,10 +38,17 @@ body {
   background-repeat: no-repeat;
   z-index: 1;
 }
+.nav-item{
+  opacity: 0.7;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  color: white;
+}
+.nav-item:hover{
+  opacity: 1;
+}
 @media (min-width: 500px) {
-  .homeimage{
-    right: auto;
-  }
   #container-top{
     left: auto;
   }
