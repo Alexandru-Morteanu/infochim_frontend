@@ -48,6 +48,24 @@ body {
 .nav-item:hover{
   opacity: 1;
 }
+p{
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-size: 18px;
+  max-width: 700px;
+  margin-left: 0.5em;
+}
+h3 {
+  position: relative;
+  font-size: 40px;
+  z-index: 2;
+}
+h2 {
+  text-align: center;
+}
 @media (min-width: 500px) {
   #container-top{
     left: auto;

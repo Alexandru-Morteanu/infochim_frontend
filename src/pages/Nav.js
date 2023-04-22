@@ -37,7 +37,7 @@ function Nav({ windowHeight }) {
           Indicatori
         </Link>
         <Link to="/ph" className="nav-item">
-          PH
+          pH
         </Link>
         <div style={{ width: 20 }}>
           <Link

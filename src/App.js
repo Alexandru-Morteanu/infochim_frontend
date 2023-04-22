@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React from "react";
 import Test from "./pages/Test_Rotation";
+import T from "./pages/Graphic";
 import Lab from "./pages/Lab";
 import Main from "./pages/Main";
 import Indicatori from "./pages/Indicatori";
@@ -17,6 +18,7 @@ const App = () => {
           <Route exact path="/ph" component={PH} />
           <Route exact path="/pascupas" component={Pas} />
           <Route exact path="/lab" component={Lab} />
+          <Route exact path="/t" component={T} />
         </Switch>
       </Router>
     </div>

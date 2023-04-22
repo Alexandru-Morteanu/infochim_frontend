@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import image from "../indicatori.jpg";
 import Footer from "./Footer";
+import Graphic from "./Graphic";
 import Nav from "./Nav";
 function PH() {
   const { homeimage, section1, section2 } = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(window.scrollY);
 
   useEffect(() => {
     function handleResize() {
@@ -92,7 +93,7 @@ function PH() {
                   fontSize: 50,
                 }}
               >
-                PH
+                pH
               </div>
             </div>
             <img
@@ -118,7 +119,25 @@ function PH() {
             width: "100%",
             height: "100vh",
           }}
-        ></div>
+        >
+          <section id="introducere">
+            <h3>PH</h3>
+            <p class="indent4">
+              Punctul final al titrării este numit punct de echivalență și este
+              punctul la care întreaga cantitate de acid sau bază a fost
+              transformată în sare. Sesizarea punctului de echivalență se poate
+              face măsurând pH-ul soluției cu ajutorul pH-metrului (titrarea se
+              oprește cand pH=7), sau cu ajutorul indicatorilor acido-bazici
+              (substanțe care își schimbă culoarea în funcție de valoarea
+              concentrației ionilor de hidrogen din soluție). Schimbarea culorii
+              indicatorului nu se produce la un anumit pH, ci interval de pH,
+              numit domeniu de viraj. Deoarece indicatorii sunt acizi slabi sau
+              baze slabe, ei se adaugă în cantități mici pentru a nu modifica
+              pH-ul soluției.
+            </p>
+            <Graphic></Graphic>
+          </section>
+        </div>
         <Footer />
       </div>
     </div>
