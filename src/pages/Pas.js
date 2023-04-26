@@ -1,20 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import image from "../indicatori.jpg";
+import image from "../img/indicatori.jpg";
 import Footer from "./Footer";
 import Nav from "./Nav";
-import { BlockMath, InlineMath } from 'react-katex';
+import { BlockMath, InlineMath } from "react-katex";
 function Pas() {
   const { homeimage, section1, section2 } = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.scrollY);
-  const config = {
-    tex2jax: {
-      inlineMath: [["$", "$"]],
-      displayMath: [["$$", "$$"]]
-    }
-  };
 
-  const equation = "$(a+b)^2$";
   useEffect(() => {
     function handleResize() {
       setWindowWidth(window.innerWidth);
@@ -128,7 +121,7 @@ function Pas() {
         >
           <section id="introducere">
             <h3>Cum incepem?</h3>
-            <p >
+            <p>
               La efectuarea unei titrări se folosește o soluție de concentrație
               cunoscută pentru a afla concentrația unei alte soluții printr-o
               reacție de neutralizare care este monitorizată. Pentru a se afla
@@ -160,10 +153,8 @@ function Pas() {
               punctului de echivalenta.
             </p>
             <div>
-              <h3 >Calcule</h3>
-              <p>
-                Determinam volumul de NaOH consumat prin diferenta.
-              </p>
+              <h3>Calcule</h3>
+              <p>Determinam volumul de NaOH consumat prin diferenta.</p>
               <InlineMath math="V_{NaOH}=V_{f}-V_{i}=33,5-0,1=33,4ml=0,0334L"></InlineMath>
               <p>
                 Calculam numarul de moli de NaOH existenti in solutia bazica.

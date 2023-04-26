@@ -3,6 +3,8 @@ import axiosInstance from "./Axios";
 import Circle from "./Circle";
 import isTouchingLimits from "./functions";
 import getColor from "./ColorsFade";
+import { InlineMath } from "react-katex";
+import AreaButons from "./AreaButons";
 
 const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
   const [itemStates, setItemStates] = useState({});
@@ -138,19 +140,17 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
         erlen.top <= erlen_stand.bottom;
     }
     if (touchingErlenStand && id === "erlen") {
+      const area = document.getElementById("area").getBoundingClientRect();
       setErlenTouch(true);
-      const standCenterX = erlen_stand.left + erlen_stand.width / 2;
-      const standCenterY = erlen_stand.top + erlen_stand.height / 2;
-
-      const newX = standCenterX - erlen.width / 2;
-      const newY = standCenterY - erlen.height / 2;
+      const newX = erlen_stand.left - area.left;
+      const newY = erlen_stand.top - area.top;
       setItemStates((prevItemStates) => ({
         ...prevItemStates,
         [id]: {
           ...prevItemStates[id],
           position: {
-            x: newX - 71,
-            y: newY - 28,
+            x: newX - 49,
+            y: newY - 132,
           },
         },
       }));
@@ -158,19 +158,17 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
       setErlenTouch(false);
     }
     if (touchingBuretStand && id === "buret") {
+      const area = document.getElementById("area").getBoundingClientRect();
       setBuretTouch(true);
-      const standCenterX = buret_stand.left + buret_stand.width / 2;
-      const standCenterY = buret_stand.top + buret_stand.height / 2;
-
-      const newX = standCenterX - buret.width / 2;
-      const newY = standCenterY - buret.height / 2;
+      const newX = buret_stand.left - area.left;
+      const newY = buret_stand.top - area.top;
       setItemStates((prevItemStates) => ({
         ...prevItemStates,
         [id]: {
           ...prevItemStates[id],
           position: {
-            x: newX - 62,
-            y: newY - 35,
+            x: newX - 95,
+            y: newY - 215,
           },
         },
       }));
@@ -188,7 +186,7 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
             itemStates?.erlen?.isFixed &&
             itemStates?.buret?.isFixed &&
             id === "erlen"
-              ? 388
+              ? 457.5
               : event.clientY - prevItemStates[id].offset.y,
         },
       },
@@ -289,15 +287,18 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
   }
   return (
     <div
+      id="area"
       style={{
-        width: "500px",
-        height: "500px",
-        border: "1px solid black",
+        width: "100vh",
+        height: "80vh",
         position: "relative",
+        borderRadius: 20,
+        border: "solid",
       }}
       onDrop={onDrop}
       onDragOver={onDragOver}
     >
+      <AreaButons />
       {droppedItems.map((item) => (
         <div key={item.id}>
           <div
@@ -306,7 +307,7 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
             ref={item.id === "erlen" ? erlenRef : null}
             style={{
               position: "absolute",
-              top: item.id === "stand" ? 170 : itemStates[item.id]?.position.y,
+              top: item.id === "stand" ? 60 : itemStates[item.id]?.position.y,
               left:
                 item.id === "stand"
                   ? item.left
@@ -330,10 +331,10 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
                   id="stand-values"
                   style={{
                     height: "100%",
-                    width: 100,
+                    width: 135,
                     position: "absolute",
                     top: 0,
-                    left: -95,
+                    left: -125,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -347,18 +348,21 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
                     value={buretSol}
                     onChange={handleBuretSol}
                     style={{
-                      height: 20,
-                      width: "90%",
+                      height: 30,
+                      width: "100%",
                       background: buretVer && buretSol !== "" ? "green" : null,
                     }}
                   />
                   <div
                     style={{
                       display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
                       width: "100%",
-                      gap: 4,
+                      gap: 10,
                     }}
                   >
+                    <InlineMath math="V_{baza}"></InlineMath>
                     <input
                       id="buret-nr-value"
                       type="number"
@@ -371,6 +375,18 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
                         width: "45%",
                       }}
                     />
+                    <span>ml</span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "100%",
+                      gap: 10,
+                    }}
+                  >
+                    <InlineMath math="c_M"></InlineMath>
                     <input
                       id="buret-nr-con"
                       type="number"
@@ -384,6 +400,7 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
                         width: "50%",
                       }}
                     />
+                    <span>mol/L</span>
                   </div>
                   <input
                     id="indicator-value"
@@ -391,32 +408,44 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
                     value={indicator}
                     onChange={handleIndicator}
                     style={{
-                      height: 20,
-                      width: "90%",
+                      height: 30,
+                      width: "100%",
                       background:
                         indicatorVer && indicator !== "" ? "green" : null,
                     }}
                   />
-                  <input
-                    id="erlen-nr-value"
-                    type="number"
-                    min="0"
-                    max="100"
-                    value={height1}
-                    onChange={handleInputChange1}
+                  <div
                     style={{
-                      height: 20,
-                      width: "40%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "100%",
+                      gap: 10,
                     }}
-                  />
+                  >
+                    <InlineMath math="V_{acid}"></InlineMath>
+                    <input
+                      id="erlen-nr-value"
+                      type="number"
+                      min="0"
+                      max="100"
+                      value={height1}
+                      onChange={handleInputChange1}
+                      style={{
+                        height: 20,
+                        width: "40%",
+                      }}
+                    />
+                    <span>ml</span>
+                  </div>
                   <input
                     id="erlen-value"
                     placeholder="Acid"
                     value={erlenSol}
                     onChange={handleErlenSol}
                     style={{
-                      height: 20,
-                      width: "90%",
+                      height: 30,
+                      width: "100%",
                       background: erlenVer && erlenSol !== "" ? "green" : null,
                     }}
                   />
@@ -435,18 +464,46 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
                     height: 50,
                     width: 20,
                     position: "absolute",
-                    top: 80,
-                    left: 139,
+                    top: 170,
+                    left: 260,
                   }}
                 />
+                {itemStates?.erlen?.isFixed && itemStates?.buret?.isFixed && (
+                  <div
+                    style={{
+                      height: 55,
+                      width: 20,
+                      position: "absolute",
+                      top: 260,
+                      left: 283,
+                      zIndex: 10,
+                      cursor: "pointer",
+                    }}
+                    //onMouseDown={buretVer && indicatorVer && erlenVer ? handleFill : null}
+                    onMouseDown={handleFill}
+                  >
+                    <b
+                      style={{
+                        height: 50,
+                        width: 100,
+                        position: "absolute",
+                        cursor: "pointer",
+                        left: 40,
+                        top: 20,
+                      }}
+                    >
+                      &larr; Click here
+                    </b>
+                  </div>
+                )}
                 <div
                   id="erlen-stand"
                   style={{
                     height: 50,
                     width: 50,
                     position: "absolute",
-                    top: 270,
-                    left: 124,
+                    top: "88%",
+                    left: "57%",
                   }}
                 >
                   <div
@@ -478,11 +535,11 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
               <div
                 id="buret-fill-100"
                 style={{
-                  height: 167,
-                  width: 13.5,
+                  height: 245,
+                  width: 19,
                   position: "absolute",
-                  top: itemStates[item.id]?.position.y + 26,
-                  left: itemStates[item.id]?.position.x + 64,
+                  top: itemStates[item.id]?.position.y + 38,
+                  left: itemStates[item.id]?.position.x + 94,
                   display: "flex",
                   alignItems: "flex-end",
                 }}
@@ -501,10 +558,10 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
                 id="buret-fill-100"
                 style={{
                   height: 155,
-                  width: 2,
+                  width: 2.5,
                   position: "absolute",
-                  top: itemStates[item.id]?.position.y + 241,
-                  left: itemStates[item.id]?.position.x + 70,
+                  top: itemStates[item.id]?.position.y + 353.3,
+                  left: itemStates[item.id]?.position.x + 103,
                   zIndex: 2,
                 }}
               >
@@ -523,10 +580,10 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
               <div
                 id="erlen-fill-100"
                 style={{
-                  height: 57,
-                  width: 65,
+                  height: 100,
+                  width: 115,
                   position: "absolute",
-                  top: itemStates[item.id]?.position.y + 43,
+                  top: itemStates[item.id]?.position.y + 78,
                   left: itemStates[item.id]?.position.x,
                   display: "flex",
                   alignItems: "flex-end",
@@ -564,16 +621,6 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
           ) : null}
         </div>
       ))}
-      <button
-        style={{
-          position: "absolute",
-          left: 500,
-          width: 50,
-          height: 100,
-        }}
-        //onMouseDown={buretVer && indicatorVer && erlenVer ? handleFill : null}
-        onMouseDown={handleFill}
-      ></button>
     </div>
   );
 };

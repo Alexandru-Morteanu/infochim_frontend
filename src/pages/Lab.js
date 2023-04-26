@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MainArea from "./MainArea";
+import Nav from "./Nav.js";
 function Lab() {
   const [droppedItems, setDroppedItems] = useState([]);
 
@@ -26,12 +27,26 @@ function Lab() {
     e.preventDefault();
   };
   return (
-    <div style={{ display: "flex" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 10,
+        width: "100%",
+        marginTop: "10vh",
+        height: "90vh",
+      }}
+    >
+      <Nav fill={true}></Nav>
       <div
         style={{
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
+          borderRadius: 20,
+          border: "solid",
+          padding: 20,
         }}
       >
         <div

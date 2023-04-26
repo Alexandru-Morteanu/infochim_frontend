@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Nav({ windowHeight }) {
+function Nav({ windowHeight, fill }) {
   return (
     <nav
       id="nav"
@@ -11,7 +11,7 @@ function Nav({ windowHeight }) {
         left: 0,
         width: "100%",
         height: 80,
-        background: windowHeight > 20 ? "black" : null,
+        background: windowHeight > 20 || fill ? "black" : null,
         color: "white",
         zIndex: 20,
         display: "flex",
@@ -32,12 +32,12 @@ function Nav({ windowHeight }) {
       >
         <Link to="/" className="nav-item">
           Acasa
+        </Link>{" "}
+        <Link to="/ph" className="nav-item">
+          pH
         </Link>
         <Link to="/indicatori" className="nav-item">
           Indicatori
-        </Link>
-        <Link to="/ph" className="nav-item">
-          pH
         </Link>
         <div style={{ width: 20 }}>
           <Link

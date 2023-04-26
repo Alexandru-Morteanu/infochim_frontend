@@ -36,20 +36,41 @@ function Graphic() {
   const handleSubmit = (e) => {
     let newValuesX = [];
     let newValuesY = [];
-    function generateData(value, i1, i2, step, ValuesX, ValuesY) {
-      for (let x = i1; x <= i2; x += step) {
-        ValuesY.push(eval(value));
+    let label = [];
+    function generateData(ValuesX, ValuesY) {
+      for (let x = 1; x <= 49; x += 1) {
+        ValuesY.push(1 - Math.log10((50 - x) / (50 + x)));
         ValuesX.push(x);
       }
+      ValuesY.push(4);
+      ValuesX.push(50);
+      ValuesY.push(6);
+      ValuesX.push(51);
+      for (let x = 52; x <= 100; x += 1) {
+        ValuesY.push(9 + Math.log(Math.log(x - 50) / Math.log(10)));
+        ValuesX.push(x);
+      }
+      for (let x = 0; x <= 100; x++) {
+        label.push(x);
+      }
     }
-    generateData(functionString, 0, 10, 0.5, newValuesX, newValuesY);
+    generateData(newValuesX, newValuesY);
+
+    // newValuesY = [1, 1.17, 1.36, 1.47, 1.6, 1.84];
     // newValuesY = [
-    //   0, 2, 2, 2, 2, 3, 9, 12.25, 16, 20.25, 25, 30.25, 36, 42.25, 49, 56.25,
-    //   64, 72.25, 81, 90.25, 100,
+    //   1, 1.17, 1.36, 1.47, 1.6, 1.84, 2.27, 2.32, 2.38, 2.44, 2.5, 2.59, 2.69,
+    //   2.81, 2.99, 3.29, 3.34, 3.39, 3.45, 3.52, 3.6, 3.82, 4.3, 4.42, 4.6, 4.9,
+    //   4.99, 5.3, 5.6, 6.3,
     // ];
-    let pos = Math.floor(sliderValue / 5);
+
+    // newValuesX = [
+    //   0, 20, 40, 50, 60, 75, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 99.1, 99.2,
+    //   99.3, 99.4, 99.5, 99.7, 99.9, 99.925, 99.95, 99.975, 99.98, 99.99, 99.995,
+    //   99.999,
+    // ];
+    let pos = Math.floor(sliderValue);
     const data = {
-      labels: newValuesX,
+      labels: label,
       datasets: [
         {
           fill: false,
@@ -76,8 +97,6 @@ function Graphic() {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        width: "100%",
-        height: "60%",
       }}
     >
       <input
@@ -103,6 +122,18 @@ function Graphic() {
           <Line
             data={chartData.data}
             options={{
+              scales: {
+                y: {
+                  ticks: {
+                    stepSize: 1,
+                  },
+                },
+                x: {
+                  ticks: {
+                    stepSize: 10,
+                  },
+                },
+              },
               animation: false,
               plugins: {
                 tooltip: {

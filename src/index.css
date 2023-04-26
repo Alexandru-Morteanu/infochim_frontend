@@ -18,21 +18,21 @@ body {
   background-repeat: no-repeat;
 }
 .stand{
-  height: 330px;
-  width: 250px;
+  height: 600px;
+  width: 454px;
   background-image: url(/Users/morteanualexandru/Desktop/infochim/frontend/public/Stand.png);
   background-size: contain;
 }
 .erlen{
-  height: 100px;
-  width: 67px;
+  height: 180px;
+  width: 120px;
   background-image: url(/Users/morteanualexandru/Desktop/infochim/frontend/public/Erlenmeyer.png);
   background-size: contain;
   z-index: 2;
 }
 .buret{
-  height: 300px;
-  width: 160px;
+  height: 440px;
+  width: 220px;
   background-image: url(/Users/morteanualexandru/Desktop/infochim/frontend/public/Burette.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -57,6 +57,21 @@ p{
   font-size: 18px;
   max-width: 700px;
   margin-left: 0.5em;
+}
+li{
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-size: 18px;
+  max-width: 600px;
+  margin-left: 0.5em;
+}
+ol li{
+  margin: 0;
+}
+ul{
+  padding-left: 10px;
 }
 h3 {
   position: relative;
