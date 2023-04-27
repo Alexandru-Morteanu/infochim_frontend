@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import image from "../img/indicatori.jpg";
+import { InlineMath } from "react-katex";
+import image from "../img/pH.jpg";
 import Footer from "./Footer";
 import Graphic from "./Graphic";
+import H3 from "./H3";
 import Nav from "./Nav";
 function PH() {
   const { homeimage, section1, section2 } = useRef(null);
@@ -120,7 +122,7 @@ function PH() {
           }}
         >
           <section id="introducere">
-            <h3>Ce este pH-ul?</h3>
+            <H3 text={"Ce este pH-ul?"} />
             <p>
               <b>&rarr;</b> <b>ph-ul</b> (puterea de hidrogen) reprezintă
               logaritmul zecimal cu semn schimbat al concentrației ionilor
@@ -128,7 +130,7 @@ function PH() {
               acesteia.
             </p>
             <p style={{ display: "flex", justifyContent: "center" }}>
-              pH = – lg[H3O+]
+              <InlineMath math="pH = –lg[H_3O^{+}]" />
             </p>
             <p>
               <b>&rarr;</b> <b>ph-ul</b> mai poate fi definit şi astfel: pH-ul
@@ -137,44 +139,42 @@ function PH() {
             </p>
 
             <p style={{ display: "flex", justifyContent: "center" }}>
-              {" "}
-              [H3O+] = 10-pH
+              <InlineMath math="[H_3O^{+}]=10^{-pH}" />
             </p>
-            <h3>Cum este pH-ul în diferite medii?</h3>
+            <H3 text={"Cum este pH-ul în diferite medii?"} />
             <p>
               În soluţii <b>acide</b>: concentraţia ionilor hidroniu este mai
               mare decât concentraţia ionilor hidroxil.
             </p>
             <p style={{ display: "flex", justifyContent: "center" }}>
-              [H3O+] {">"} [HO-]
+              <InlineMath math="[H_3O^{+}] > [HO^{-}]" />
             </p>
             <p>
               În soluţii <b>neutre</b>: concentraţia ionilor hidroniu este egală
               cu concentraţia ionilor hidroxil.
             </p>
             <p style={{ display: "flex", justifyContent: "center" }}>
-              {" "}
-              [H3O+] = [HO-]{" "}
+              <InlineMath math="[H_3O^{+}] = [HO^{-}]" />
             </p>
             <p>
               În soluţii <b>bazice</b>: concentraţia ionilor hidroniu este mai
               mică decât concentraţia ionilor hidroxil.{" "}
             </p>
             <p style={{ display: "flex", justifyContent: "center" }}>
-              [H3O+] {"<"} [HO-]
+              <InlineMath math="[H_3O^{+}] < [HO^{-}]" />
             </p>
             <p>
               Când <b>creşte</b> concentraţia de protoni din soluţie, pH-ul{" "}
               <b>scade</b>, iar când <b>scade</b> concentraţia de protoni din
               soluţie, pH-ul <b>creşte</b>.
             </p>
-            <h3>Ce este scala de pH?</h3>
+            <H3 text={"Ce este scala de pH?"} />
             <p>
               <b>Scala de pH</b> măsoară cât de acidă sau cât de bazică este o
-              substanţă. Scala de pH cuprinde valori de la <b>0 la 14</b>, cu
-              valorile între <b>0 şi 7</b> aparţînând <b>acizilor</b>, şi
+              soluţie. Scala de pH cuprinde valori de la <b>0 la 14</b>, cu
+              valorile între <b>0 şi 7</b> aparţinând <b>acizilor</b>, şi
               valorile între
-              <b> 7 şi 14</b> aparţînând <b>bazelor</b>. Valoarea pH-ului apei
+              <b> 7 şi 14</b> aparţinând <b>bazelor</b>. Valoarea pH-ului apei
               pure, 7, este baza scalei de pH.
             </p>
             <p style={{ display: "flex", justifyContent: "center" }}>
@@ -184,15 +184,15 @@ function PH() {
               {"Baze: pH > 7"}
             </p>
             <p>
-              <b>Acizii țări</b> (disociază total în soluție) au, în general, pH
+              <b>Acizii tari</b> (disociază total în soluție) au, în general, pH
               foarte scăzut. <b>Acizii slabi</b> (disociază incomplet în
-              soluție) au valori de pH de la 4 la 6. <b> Bazele țări</b> au pH
+              soluție) au valori de pH de la 4 la 6. <b> Bazele tari</b> au pH
               foarte ridicat.
               <b> Bazele slabe</b> au, de obicei, pH-ul între 8 şi 11.
             </p>
             <p>
-              Teoretic, <b>pH-ul neutru</b> este considerat că fiind pH=7.
-              Practic, sunt considerate că fiind <b>neutre</b> toate soluţiile
+              Teoretic, <b>pH-ul neutru</b> este considerat ca fiind pH=7.
+              Practic, sunt considerate ca fiind <b>neutre</b> toate soluţiile
               care au pH-ul între 6 şi 8.
             </p>
             <p>
@@ -200,7 +200,7 @@ function PH() {
               și este punctul la care <b>întreaga</b> cantitate de acid sau bază
               a fost transformată în <b>sare</b>.
             </p>
-            <h3>Cum sesizam punctul de echivalenta?</h3>
+            <H3 text={"Cum sesizăm punctul de echivalență?"} />
             <p>
               <b>Sesizarea</b> punctului de echivalență se poate face măsurând
               pH-ul soluției cu ajutorul
@@ -216,7 +216,7 @@ function PH() {
               Deoarece indicatorii sunt acizi slabi sau baze slabe, ei se adaugă
               în <b>cantități mici</b> pentru a nu modifica pH-ul soluției.
             </p>
-            <Graphic></Graphic>
+            <Graphic nr={2}></Graphic>
           </section>
         </div>
         <Footer />

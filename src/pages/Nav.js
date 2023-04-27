@@ -31,7 +31,7 @@ function Nav({ windowHeight, fill }) {
         }}
       >
         <Link to="/" className="nav-item">
-          Acasa
+          Acasă
         </Link>{" "}
         <Link to="/ph" className="nav-item">
           pH

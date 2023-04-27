@@ -49,6 +49,7 @@ body {
   opacity: 1;
 }
 p{
+  text-indent: 30px;
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -68,7 +69,8 @@ li{
   margin-left: 0.5em;
 }
 ol li{
-  margin: 0;
+  margin: 10px;
+  padding-left: 10px;
 }
 ul{
   padding-left: 10px;
@@ -80,6 +82,31 @@ h3 {
 }
 h2 {
   text-align: center;
+}
+#guide{
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.2s;
+  background-image: url("/Users/morteanualexandru/Desktop/infochim/frontend/public/guide.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#calcule{
+  height: 70px;
+  width: 70px;
+  margin-top: 5px;
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.2s;
+  background-image: url("/Users/morteanualexandru/Desktop/infochim/frontend/public/calcule.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 20;
+}
+#guide:hover,#calcule:hover{
+  opacity: 0.5;
 }
 @media (min-width: 500px) {
   #container-top{

@@ -5,11 +5,14 @@ import isTouchingLimits from "./functions";
 import getColor from "./ColorsFade";
 import { InlineMath } from "react-katex";
 import AreaButons from "./AreaButons";
+import Graphic from "./Graphic";
 
 const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
   const [itemStates, setItemStates] = useState({});
   const [acid, setAcid] = useState(0);
   const [baza, setBaza] = useState(0);
+  const [fixHeight, setFixHeight1] = useState(0);
+  const [fixHeight1, setFixHeight2] = useState(0);
   const [buretTouch, setBuretTouch] = useState(false);
   const [erlenTouch, setErlenTouch] = useState(false);
   const [goodToTry, setGoodToTry] = useState(true);
@@ -19,6 +22,7 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
   });
   const [opacity, setOpacity] = useState(0.7);
   const [colors, setColors] = useState([]);
+  const [picatura, setPicatura] = useState("");
   const [buretCon, setBuretCon] = useState(0);
   const [buretVol, setBuretVol] = useState(0);
   const [buretSol, setBuretSol] = useState("");
@@ -255,10 +259,15 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
     if (opacity <= 0) {
       setGoodToTry(true);
     } else {
-      setOpacity(opacity - 0.02);
+      setOpacity(opacity - 0.05);
       setGoodToTry(false);
     }
   }, [limita.left, limita.right]);
+  useEffect(() => {
+    if (opacity < 0) {
+      setPicatura(`rgb(${getColor(height1, acid, baza, colors)})`);
+    }
+  }, [opacity]);
   function handleInputChange(event) {
     const parse = parseInt(event.target.value);
     setHeight(parse);
@@ -266,7 +275,10 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
   function handleInputChange1(event) {
     const parse = parseInt(event.target.value);
     setHeight1(parse);
+    setFixHeight1(parse);
+    setPicatura("rgb(255,255,255)");
     setBuretVol((parse * 0.1) / buretCon);
+    setFixHeight2((parse * 0.1) / buretCon);
     setBaza((parse * 0.1) / buretCon);
     setAcid(parse);
   }
@@ -274,6 +286,7 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
     const parse = parseFloat(event.target.value);
     setBuretCon(parse);
     setBuretVol((height1 * 0.1) / parse);
+    setFixHeight2((height1 * 0.1) / parse);
     setBaza((height1 * 0.1) / parse);
   }
   function handleBuretSol(event) {
@@ -299,6 +312,19 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
       onDragOver={onDragOver}
     >
       <AreaButons />
+      <div
+        style={{
+          top: 0,
+          position: "absolute",
+        }}
+      >
+        <Graphic
+          nr={1}
+          height={height1}
+          setHeight={fixHeight}
+          bazaVol={fixHeight1}
+        />
+      </div>
       {droppedItems.map((item) => (
         <div key={item.id}>
           <div
@@ -593,12 +619,7 @@ const MainArea = ({ droppedItems, onDrop, onDragOver }) => {
                 <div
                   id="erlen-fill"
                   style={{
-                    backgroundColor: `rgb(${getColor(
-                      height1,
-                      acid,
-                      baza,
-                      colors
-                    )})`,
+                    backgroundColor: picatura,
                     borderTop: "solid",
                     borderWidth: 0.4,
                     height: `${height1}%`,

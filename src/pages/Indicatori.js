@@ -3,6 +3,7 @@ import image from "../img/indicatori.jpg";
 import image1 from "../img/indicatori.png";
 import Footer from "./Footer";
 import Nav from "./Nav";
+import H3 from "./H3";
 function Indicatori() {
   const { homeimage, section1, section2 } = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -119,21 +120,46 @@ function Indicatori() {
             width: "100%",
           }}
         >
-          <section id="introducere">
-            <h3> Indicatori de pH</h3>
+          <section
+            id="introducere"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <H3 text={"Indicatori de pH"} />
             <p>
-              Indicatorii chimici de culoare sunt acizi sau baze organice slabe
+              <b>Indicatorii</b> chimici de culoare sunt <b>acizi</b> sau{" "}
+              <b>baze </b> organice <b>slabe </b>
               care au proprietatea de a-și modifica o caracteristica ușor
               sesizabilă(culoarea) atunci când în sistemul chimic se schimbă un
               anumit parametru. Indicatorii chimici de culoare sunt sensibili de
-              fapt la concentrația ionilor de hidroniu din sistem, sau mai bine
-              zis la nivelul pH-ului. Fiecare indicator este caracterizat de un
-              domeniu de viraj. Domeniul de viraj reprezintă treptele sau
-              unitățile de pH la care indicatorul începe să reacționeze cu
-              agentul de titrare folosit. Domeniul de viraj este de obicei de
-              aproximativ 2 unități de pH .
+              fapt la concentrația <b>ionilor de hidroniu</b> din sistem, sau
+              mai bine zis la <b>nivelul pH-ului</b>.
             </p>
-            <img src={image1}></img>
+            <p>
+              {" "}
+              Fiecare indicator este caracterizat de un <b>domeniu de viraj</b>.
+              Domeniul de viraj reprezintă treptele sau unitățile de pH la care
+              indicatorul începe să reacționeze cu <b>agentul de titrare </b>
+              folosit. Domeniul de viraj este de obicei de aproximativ{" "}
+              <b>2 unități </b>
+              de pH .
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                style={{
+                  width: 500,
+                }}
+                src={image1}
+              ></img>
+            </div>
           </section>
         </div>
         <Footer />

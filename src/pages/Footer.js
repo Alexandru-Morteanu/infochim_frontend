@@ -1,4 +1,14 @@
 import React from "react";
+import * as Scroll from "react-scroll";
+import {
+  Link,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 
 function Footer() {
   return (
@@ -15,9 +25,28 @@ function Footer() {
           background: "rgb(32, 32, 32)",
         }}
       >
-        <button className="btncssfooter">
-          <i className="fa fa-fw fa-chevron-up"></i>
-        </button>
+        <div
+          style={{
+            width: "100%",
+            height: 30,
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Link to={"introducere"} offset={-100}>
+            <div
+              style={{
+                width: 30,
+                height: 25,
+                background: "white",
+                borderRadius: 10,
+                cursor: "pointer",
+              }}
+            >
+              <div>^</div>
+            </div>
+          </Link>
+        </div>
         <h2
           className="bibliografiecss"
           style={{

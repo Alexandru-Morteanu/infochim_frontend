@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { InlineMath } from "react-katex";
 import { Link } from "react-router-dom";
 import image from "../img/homepage.jpg";
 import Footer from "./Footer";
@@ -59,7 +60,7 @@ function Main() {
           }}
         >
           <Link to="/" className="nav-item">
-            Acasa
+            Acasă
           </Link>
           <Link to="/ph" className="nav-item">
             pH
@@ -175,7 +176,7 @@ function Main() {
                   fontSize: windowWidth > 500 ? 50 : 36,
                 }}
               >
-                Titrarea acido-bazica
+                Titrarea acido-bazică
               </div>
               <div
                 style={{
@@ -201,44 +202,47 @@ function Main() {
           }}
         >
           <section id="introducere">
-            <H3 text="Care este importanta titrarii?" width={67} />
+            <H3 text={" Care este importanța titrării?"} />
             <p>
               De la cele mai mici particule, până la cele mai complexe
-              combinații, natura din jurul nostru poate fi „descompusă” și
+              combinații, natură din jurul nostru poate fi „descompusă” și
               înțeleasă cu ajutorul chimiei. Acizii și bazele sunt două clase de
               compuși extrem de importante în chimie și evident cu largă
-              utilizare industriala, în procese biochimice, etc.
+              utilizare industrială, în procese biochimice, etc.
             </p>
             <p>
               Cunoașterea <b>concentrației acizilor și bazelor</b> este foarte
               importantă pentru verificarea <b>purității</b> unor substanțe
-              chimice care sunt <b>sintetizate</b>, deoarece acestea intrând în
+              chimice care sunt <b>sintetizate</b>, deoarece acestea întrând în
               compoziția altor substanțe (uneori produse farmaceutice) au nevoie
               de <b>dozaj strict</b>.
             </p>
-            <H3 text={"Pe ce se bazeaza titrarea?"} width={58} />
+            <H3 text={"Pe ce se bazează titrarea?"} />
+
             <p>
               Metodele <b>volumetrice</b> care urmăresc stabilirea
-              <b>concentrației</b> unui acid sau a unei baze într-o soluție
-              dată, utilizând pentru aceasta o soluție de bază sau de acid de
-              <b>concentrație cunoscută</b>, au la bază reacții de
-              <b>neutralizare</b>. În principiu această metodă constă în
-              <b>titrarea</b> unui acid cu o bază.
+              <b> concentrației</b> unui acid sau a unei baze într-o soluție
+              dată, utilizând pentru această o soluție de bază sau de acid de
+              <b> concentrație cunoscută</b>, au la bază reacții de
+              <b> neutralizare</b>. În principiu această metodă constă în
+              <b> titrarea</b> unui acid cu o bază.
             </p>
             <p>
               <b>Reacția de neutralizare</b> este reacția dintre un acid și o
               baza, cu formare de <b>sare și apă</b>. În soluție apoasă,
-              <b>reacția de</b>neutralizare, constă în
-              <b>schimbul de protoni dintre ionii hidroni</b>, H3O+ proveniți
-              din <b>ionizarea acidului</b> și hidroxid, HO -proveniți din
-              <b>ionizarea bazei</b>.
+              <b> reacția de </b>neutralizare, constă în
+              <b> schimbul de protoni dintre ionii hidroniu</b>,{" "}
+              <InlineMath math="H_3O^{+}"></InlineMath>
+              proveniți din <b>ionizarea acidului</b> și hidroxid,{" "}
+              <InlineMath math="HO^{-}"></InlineMath> proveniți din
+              <b> ionizarea bazei</b>.
             </p>
             <p>
               Pentru ca <b>titrarea</b> să conducă la un rezultat cât mai
-              <b>exact</b>, trebuie să se sesizeze cât mai bine
-              <b>punctul de echivalență</b>.
+              <b> exact</b>, trebuie să se sesizeze cât mai bine
+              <b> punctul de echivalență</b>.
             </p>
-            <p>Afla cum poti efectua o titrarea pas cu pas</p>
+            <p>Află cum poți efectua o titrarea pas cu pas:</p>
           </section>
         </div>
         <Footer />
